@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Analytics Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="dashboard-container">
+
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>📊 Project Analytics Dashboard</h1>
+                <p class="subtitle">AI-Powered Project Management Insights</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="refreshData()">🔄 Refresh</button>
+            </div>
+        </header>
+
+
+        <nav class="dashboard-nav">
+            <button class="nav-btn active" data-section="overview">📈 Overview</button>
+            <button class="nav-btn" data-section="predictions">🔮 Predictions</button>
+            <button class="nav-btn" data-section="projects">📋 Projects</button>
+            <button class="nav-btn" data-section="models">🤖 Model Insights</button>
+        </nav>
+
+
+        <main class="dashboard-main">
+
+            <section id="overview" class="section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <h3 id="total-projects">-</h3>
+                            <p>Total Projects</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <h3 id="completed-projects">-</h3>
+                            <p>Completed</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-content">
+                            <h3 id="in-progress-projects">-</h3>
+                            <p>In Progress</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <h3 id="total-cost">-</h3>
+                            <p>Total Investment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Projects by Type</h3>
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Projects by Region</h3>
+                        <canvas id="regionChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Projects by Complexity</h3>
+                        <canvas id="complexityChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Project Status Distribution</h3>
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="predictions" class="section">
+                <div class="prediction-container">
+                    <div class="prediction-form-card">
+                        <h2>🔮 Predict Project Outcome</h2>
+                        <p class="form-description">Enter project details to predict delays and identify potential
+                            bottlenecks</p>
+
+                        <form id="predictionForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="project_cost">Project Cost ($)</label>
+                                    <input type="number" id="project_cost" name="project_cost" required step="0.01"
+                                        placeholder="e.g., 5000000">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="project_benefit">Project Benefit ($)</label>
+                                    <input type="number" id="project_benefit" name="project_benefit" required
+                                        step="0.01" placeholder="e.g., 8000000">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="complexity">Complexity</label>
+                                    <select id="complexity" name="complexity" required>
+                                        <option value="">Select complexity</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="completionpercent">Completion %</label>
+                                    <input type="number" id="completionpercent" name="completionpercent" required
+                                        min="0" max="100" placeholder="e.g., 75">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="actual_duration_days">Duration (days)</label>
+                                    <input type="number" id="actual_duration_days" name="actual_duration_days" required
+                                        min="1" placeholder="e.g., 120">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="project_type">Project Type</label>
+                                    <select id="project_type" name="project_type">
+                                        <option value="INCOME GENERATION">Income Generation</option>
+                                        <option value="PROCESS IMPROVEMENT">Process Improvement</option>
+                                        <option value="COST REDUCTION">Cost Reduction</option>
+                                        <option value="WORKING CAPITAL IMPROVEMENT">Working Capital Improvement</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="region">Region</label>
+                                    <select id="region" name="region">
+                                        <option value="North">North</option>
+                                        <option value="South">South</option>
+                                        <option value="East">East</option>
+                                        <option value="West">West</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="department">Department</label>
+                                    <select id="department" name="department">
+                                        <option value="Admin & BI">Admin & BI</option>
+                                        <option value="eCommerce">eCommerce</option>
+                                        <option value="Warehouse">Warehouse</option>
+                                        <option value="Sales and Marketing">Sales and Marketing</option>
+                                        <option value="Supply Chain">Supply Chain</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-large">🎯 Generate Prediction</button>
+                        </form>
+                    </div>
+
+                    <div class="prediction-result-card" id="predictionResult" style="display: none;">
+                        <h2>📊 Prediction Results</h2>
+                        <div class="result-content">
+                            <div class="result-item delay-result">
+                                <div class="result-icon">⏱️</div>
+                                <div class="result-details">
+                                    <h3>Predicted Delay</h3>
+                                    <p class="result-value" id="delayValue">-</p>
+                                    <p class="result-label">days</p>
+                                </div>
+                            </div>
+
+                            <div class="result-item bottleneck-result">
+                                <div class="result-icon">🚧</div>
+                                <div class="result-details">
+                                    <h3>Resource Bottleneck</h3>
+                                    <p class="result-value" id="bottleneckValue">-</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-recommendations" id="recommendations">
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="projects" class="section">
+                <div class="projects-header">
+                    <h2>📋 All Projects</h2>
+                    <div class="projects-filters">
+                        <input type="text" id="searchProjects" placeholder="🔍 Search projects..." class="search-input">
+                        <select id="filterStatus" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="Completed">Completed</option>
+                            <option value="In - Progress">In Progress</option>
+                            <option value="Cancelled">Cancelled</option>
+                            <option value="On - Hold">On Hold</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="projects-table-container">
+                    <table class="projects-table">
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Completion</th>
+                                <th>Cost</th>
+                                <th>Benefit</th>
+                                <th>Region</th>
+                                <th>Complexity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBody">
+                            <tr>
+                                <td colspan="8" class="loading-cell">Loading projects...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            <section id="models" class="section">
+                <h2>🤖 Machine Learning Model Insights</h2>
+
+                <div class="models-grid">
+                    <div class="model-card">
+                        <div class="model-header">
+                            <h3>⏱️ Delay Prediction Model</h3>
+                            <span class="model-badge">Regressor</span>
+                        </div>
+                        <div class="model-content">
+                            <div class="model-metric">
+                                <span class="metric-label">Algorithm</span>
+                                <span class="metric-value" id="delayModelType">-</span>
+                            </div>
+                            <div class="model-metric">
+                                <span class="metric-label">Mean Absolute Error</span>
+                                <span class="metric-value" id="delayMAE">-</span>
+                            </div>
+                            <div class="model-metric">
+                                <span class="metric-label">R² Score</span>
+                                <span class="metric-value" id="delayR2">-</span>
+                            </div>
+                            <div class="model-metric">
+                                <span class="metric-label">Estimators</span>
+                                <span class="metric-value" id="delayEstimators">-</span>
+                            </div>
+                        </div>
+                        <div class="model-features">
+                            <h4>Key Features</h4>
+                            <div id="delayFeatures" class="features-list">Loading...</div>
+                        </div>
+                    </div>
+
+                    <div class="model-card">
+                        <div class="model-header">
+                            <h3>🚧 Bottleneck Detection Model</h3>
+                            <span class="model-badge">Classifier</span>
+                        </div>
+                        <div class="model-content">
+                            <div class="model-metric">
+                                <span class="metric-label">Algorithm</span>
+                                <span class="metric-value" id="bottleneckModelType">-</span>
+                            </div>
+                            <div class="model-metric">
+                                <span class="metric-label">Accuracy</span>
+                                <span class="metric-value" id="bottleneckAccuracy">-</span>
+                            </div>
+                            <div class="model-metric">
+                                <span class="metric-label">Estimators</span>
+                                <span class="metric-value" id="bottleneckEstimators">-</span>
+                            </div>
+                        </div>
+                        <div class="model-features">
+                            <h4>Key Features</h4>
+                            <div id="bottleneckFeatures" class="features-list">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
