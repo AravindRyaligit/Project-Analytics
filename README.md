@@ -3,13 +3,12 @@
 AI-powered project management analytics system with machine learning predictions for project delays and resource bottlenecks.
 
 
+![Screenshot 2025-11-29 142046](https://github.com/user-attachments/assets/64e7435c-1257-4d67-bb15-47fa49232859)
 
-![Screenshot 2025-11-2![Screenshot 2025-11-29 142046](https://github.com/user-attachments/assets/46ded629-07d3-4242-aed9-0d6f4237245b)
+![Screenshot 2025-11-29 142027](https://github.com/user-attachments/assets/252c5ea5-9d83-4792-91c6-32cb8f34ff2a)
 
-9 142027](https://github.com/user-attachments/assets/0d37b247-8caa-43e4-b8ca-59d8769b479a)
+![Screenshot 2025-11-29 141921](https://github.com/user-attachments/assets/53ddcd6a-895a-48fc-9407-b743c7e90965)
 
-
-![Screenshot 2025-11-29 141921](https://github.com/user-attachments/assets/f61782c3-1c77-4a92-8ed5-c9eb0bbed912)
 
 ## Features
 
@@ -142,4 +141,5 @@ This project is licensed under the MIT License.
 Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
 
 Project Link: [https://github.com/yourusername/project-analytics](https://github.com/yourusername/project-analytics)
+
 
