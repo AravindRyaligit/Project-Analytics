@@ -2,6 +2,14 @@
 
 AI-powered project management analytics system with machine learning predictions for project delays and resource bottlenecks.
 
+## Features
+
+- � **Interactive Dashboard** - Real-time project analytics with beautiful visualizations
+- 🔮 **ML Predictions** - Predict project delays and identify resource bottlenecks
+- � **Data Visualization** - Charts powered by Chart.js
+- 📋 **Project Management** - Search, filter, and analyze all projects
+- 🤖 **Model Insights** - View ML model performance metrics
+
 ![Screenshot 2025-11-29 141921](https://github.com/user-attachments/assets/53ddcd6a-895a-48fc-9407-b743c7e90965)
 
 ![Screenshot 2025-11-29 142046](https://github.com/user-attachments/assets/64e7435c-1257-4d67-bb15-47fa49232859)
@@ -11,13 +19,7 @@ AI-powered project management analytics system with machine learning predictions
 
 
 
-## Features
 
-- � **Interactive Dashboard** - Real-time project analytics with beautiful visualizations
-- 🔮 **ML Predictions** - Predict project delays and identify resource bottlenecks
-- � **Data Visualization** - Charts powered by Chart.js
-- 📋 **Project Management** - Search, filter, and analyze all projects
-- 🤖 **Model Insights** - View ML model performance metrics
 
 ## Tech Stack
 
@@ -57,6 +59,7 @@ project_analytics/
 ## License
 
 This project is licensed under the MIT License.
+
 
 
 
